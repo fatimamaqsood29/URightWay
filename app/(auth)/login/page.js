@@ -1,5 +1,7 @@
 "use client";
 import { useState } from 'react';
+import { useAuth } from '@/app/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,6 +14,11 @@ export default function Login() {
     email: '',
     password: ''
   });
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const { login } = useAuth();
+  const router = useRouter();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,12 +26,28 @@ export default function Login() {
       ...prev,
       [name]: value
     }));
+    setError(''); // Clear error when user types
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Form submitted:', formData);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const result = await login(formData.email, formData.password);
+      
+      if (result.success) {
+        router.push('/dashboard');
+      } else {
+        setError(result.error || 'Login failed. Please try again.');
+      }
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
+      console.error('Login error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -96,6 +119,12 @@ export default function Login() {
             <h1 className="text-2xl font-bold text-center mb-2">Welcome to U Right Way</h1>
             <p className="text-gray-600 text-center mb-8">Login to continue the app.</p>
 
+            {error && (
+              <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+                {error}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -150,9 +179,12 @@ export default function Login() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-[#1EBF89] text-white py-3 px-4 rounded-md hover:bg-[#18a678] focus:outline-none focus:ring-2 focus:ring-[#1EBF89] focus:ring-offset-2 font-medium transition-colors"
+                  disabled={isLoading}
+                  className={`w-full bg-[#1EBF89] text-white py-3 px-4 rounded-md hover:bg-[#18a678] focus:outline-none focus:ring-2 focus:ring-[#1EBF89] focus:ring-offset-2 font-medium transition-colors ${
+                    isLoading ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
                 >
-                  Log in
+                  {isLoading ? 'Logging in...' : 'Log in'}
                 </button>
               </div>
 
