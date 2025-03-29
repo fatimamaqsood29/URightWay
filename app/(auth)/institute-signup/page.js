@@ -1,6 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -9,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import logo from "@/app/logo/URightWay.png";
 
 export default function FlightWayAccountForm() {
+  const router = useRouter();
   const { register, handleSubmit } = useForm();
   const [avatar, setAvatar] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -17,6 +19,7 @@ export default function FlightWayAccountForm() {
   const [district, setDistrict] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const defaultAvatar = "/profile.png";
 
@@ -52,18 +55,32 @@ export default function FlightWayAccountForm() {
     setDistrict(e.target.value);
   };
 
-  const onSubmit = (data) => {
-    const formData = new FormData();
-    formData.append("avatar", avatar);
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
-    });
-    formData.append("city", city);
-    formData.append("district", district);
-    formData.append("country", country);
-    formData.append("state", state);
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append("avatar", avatar);
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+      formData.append("city", city);
+      formData.append("district", district);
+      formData.append("country", country);
+      formData.append("state", state);
 
-    console.log(Object.fromEntries(formData));
+      // Here you would typically send the data to your API
+      console.log(Object.fromEntries(formData));
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Redirect to login page after successful submission
+      router.push("/login");
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -138,6 +155,7 @@ export default function FlightWayAccountForm() {
               Upload Photo
             </button>
           </div>
+
           {/* Form Fields */}
           <div className="space-y-4">
             {/* Full Name */}
@@ -441,13 +459,19 @@ export default function FlightWayAccountForm() {
               />
             </div>
           </div>
+
           {/* Submit Button */}
           <div className="mt-8">
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-[#1EBF89] text-white rounded-md hover:bg-[#18a678] transition-colors text-base font-semibold"
+              disabled={isSubmitting}
+              className={`w-full px-6 py-3 text-white rounded-md transition-colors text-base font-semibold ${
+                isSubmitting
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-[#1EBF89] hover:bg-[#18a678]"
+              }`}
             >
-              Proceeds Payment
+              {isSubmitting ? "Processing..." : "Proceeds Payment"}
             </button>
           </div>
         </form>
