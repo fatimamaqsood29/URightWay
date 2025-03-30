@@ -1,26 +1,14 @@
+// app/dashboard/layout.js
 "use client";
-// import { useAuth } from '../context/AuthContext';
-import { useAuth } from '@/app/context/AuthContext';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import Navbar from '../../components/dashboard/Navbar';
 
 export default function DashboardLayout({ children }) {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login');
-    }
-  }, [user, loading]);
-
-  if (loading || !user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1EBF89]"></div>
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+      <Navbar />
+      <div className="flex-1 md:ml-64 lg:ml-80 xl:ml-96 mt-16 md:mt-0">
+        {children}
       </div>
-    );
-  }
-
-  return <>{children}</>;
+    </div>
+  );
 }

@@ -40,7 +40,7 @@ export default function ForgetPin() {
         <div className="md:w-1/2 flex items-center justify-center p-8 bg-white">
           <div className="w-full max-w-md">
             {/* Logo positioned top left */}
-            <div className="absolute top-4 left-89 md:left-990">
+            <div className="absolute top-4 left-89 md:left-198">
               <Image
                 src={logo}
                 alt="URightWay Logo"
