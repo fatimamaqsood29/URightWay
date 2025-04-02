@@ -49,7 +49,7 @@ export default function Navbar() {
         </svg>
       ),
       text: "Notifications",
-      badge: 3
+    //  badge: 3
     },
     {
       href: "/dashboard/chat-room",
