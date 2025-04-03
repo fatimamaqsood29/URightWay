@@ -22,6 +22,13 @@ const categories = [
     iconBg: "#FFF7C2"
   },
   {
+    label: "Parents Obedience",
+    tag: "Reading",
+    tasks: ["Father", "Mother", "Elder Sibling"],
+    bgColor: "#FC80CA",
+    iconBg: "#FC37AC"
+  },
+  {
     label: "Health",
     tag: "Reading",
     tasks: ["Exercise", "Sports", "Unthoughts Things", "Teeth Brush", "Drink Water", 
@@ -31,12 +38,27 @@ const categories = [
     iconBg: "#E39608"
   },
   {
+    label: "Personality Groom",
+    tag: "Reading",
+    tasks: ["Dressing", "Hairs", "Stoes", "Gate", "Speaking"],
+    bgColor: "#4BAC00",
+    iconBg: "#377D00"
+  },
+ 
+  {
     label: "Etiquettes",
     tag: "Reading",
     tasks: ["Lic", "Truthfulness", "Respect", "Help", "Quoret", "Abuse", 
            "Theft", "Backbiting", "Jealous", "Promise", "Remove Hardie", "Shout"],
     bgColor: "#03B0CF",
     iconBg: "#009BB7"
+  },
+  {
+    label: "Bearance",
+    tag: "Complete",
+    tasks: ["Parents Debate", "Anyone Debate", "Forgive Mistake"],
+    bgColor: "#FF4F4F",
+    iconBg: "#FC2B2B"
   },
   {
     label: "My Dream & Mission",
@@ -46,6 +68,13 @@ const categories = [
     iconBg: "#3271FB"
   },
   {
+    label: "Discipline & Time Management",
+    tag: "Complete",
+    tasks: ["Discipline Chart", "Self Study", "Mobile Use", "Waste Time", "Tomorrow"],
+    bgColor: "#DB8FF9",
+    iconBg: "#E39BFF"
+  },
+  {
     label: "Hardworking",
     tag: "Reading",
     tasks: ["Hardwork"],
@@ -53,68 +82,42 @@ const categories = [
     iconBg: "#FF7118"
   },
   {
-    label: "Amount Spent",
-    tag: "Complete",
-    tasks: ["Packet Money", "Barrow", "Wasteful spending", "Save Money"],
-    bgColor: "#DB8FF9",
-    iconBg: "#E39BFF"
-  },
-  {
-    label: "Self Confidence",
-    tag: "Complete",
-    tasks: ["Positive Thinking", "Self Talk", "Own Quantities"],
-    bgColor: "#FC80CA",
-    iconBg: "#FC37AC"
-  },
-  {
-    label: "Parents Obedience",
+    label: "Love With Pakistan",
     tag: "Reading",
-    tasks: ["Father", "Mother", "Elder Sibling"],
-    bgColor: "#4BAC00",
-    iconBg: "#377D00"
-  },
-  {
-    label: "Personality Groom",
-    tag: "Reading",
-    tasks: ["Dressing", "Hairs", "Stoes", "Gate", "Speaking"],
+    tasks: ["Responsible Citizen", "Emotional Attachment", "Respect of Law"],
     bgColor: "#8F8383",
     iconBg: "#737373"
   },
   {
-    label: "Bearance",
+    label: "Amount Spent",
     tag: "Complete",
-    tasks: ["Parents Debate", "Anyone Debate", "Forgive Mistake"],
-    bgColor: "#FFA36A",
-    iconBg: "#FFF7C2"
-  },
-  {
-    label: "Discipline & Time Management",
-    tag: "Complete",
-    tasks: ["Discipline Chart", "Self Study", "Mobile Use", "Waste Time", "Tomorrow"],
-    bgColor: "#03B0CF",
-    iconBg: "#009BB7"
-  },
-  {
-    label: "Love With Pakistan",
-    tag: "Reading",
-    tasks: ["Responsible Citizen", "Emotional Attachment", "Respect of Law"],
-    bgColor: "#F9A508",
-    iconBg: "#E39608"
+    tasks: ["Packet Money", "Barrow", "Wasteful spending", "Save Money"],
+    bgColor: "#0EB4C0",
+    iconBg: "#48BFC8"
   },
   {
     label: "Cleanliness",
     tag: "Reading",
     tasks: ["Take Bath", "Dress", "Name", "Class Room", "Street", "Pakistan"],
-    bgColor: "#6191F9",
-    iconBg: "#3271FB"
+    bgColor: "#87B6D8",
+    iconBg: "#74B0DC"
   },
+  {
+    label: "Self Confidence",
+    tag: "Complete",
+    tasks: ["Positive Thinking", "Self Talk", "Own Quantities"],
+    bgColor: "#B67649",
+    iconBg: "#AB4B06"
+  },
+ 
+ 
   {
     label: "In School/College",
     tag: "Complete",
     tasks: ["Attendees", "Lots/in Time", "Home Work", "Teacher Intention", 
            "Subject Teacher Leave", "Subject Learning", "Insulated By Teacher"],
-    bgColor: "#FE9554",
-    iconBg: "#FF7118"
+    bgColor: "#8866D8",
+    iconBg: "#8552FC"
   },
 ];
 
@@ -203,12 +206,16 @@ const MyDiary = () => {
         </div>
 
         {/* Task Categories */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((category, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl shadow-md p-6"
-              style={{ backgroundColor: category.bgColor, color: 'white' }}
+              className="bg-white rounded-xl shadow-md p-6 flex flex-col"
+              style={{ 
+                backgroundColor: category.bgColor, 
+                color: 'white',
+                height: '300px'
+              }}
             >
               <div className="flex items-center mb-4">
                 <span 
@@ -222,13 +229,13 @@ const MyDiary = () => {
                 </h3>
               </div>
               
-              <div className="space-y-3">
+              <div className="space-y-3 overflow-y-auto flex-grow">
                 {chunkArray(category.tasks, 5).map((taskGroup, groupIndex) => (
                   <div key={groupIndex} className="flex flex-wrap gap-2">
                     {taskGroup.map((task, taskIndex) => (
                       <span 
                         key={taskIndex} 
-                        className="     text-sm"
+                        className="text-sm"
                       >
                         {task}
                       </span>
@@ -238,64 +245,9 @@ const MyDiary = () => {
               </div>
             </div>
           ))}
-        </div> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-  {categories.map((category, index) => (
-    <div 
-      key={index} 
-      className="bg-white rounded-xl shadow-md p-6 flex flex-col"
-      style={{ 
-        backgroundColor: category.bgColor, 
-        color: 'white',
-        height: '300px' // Fixed height for all boxes
-      }}
-    >
-      <div className="flex items-center mb-4">
-        <span 
-          className="text-xs font-medium px-2.5 py-0.5 rounded"
-          style={{ backgroundColor: category.iconBg, color: 'black' }}
-        >
-          {category.tag}
-        </span>
-        <h3 className="ml-2 font-bold text-lg">
-          {category.label}
-        </h3>
-      </div>
-      
-      <div className="space-y-3 overflow-y-auto flex-grow"> {/* Make content scrollable */}
-        {chunkArray(category.tasks, 5).map((taskGroup, groupIndex) => (
-          <div key={groupIndex} className="flex flex-wrap gap-2">
-            {taskGroup.map((task, taskIndex) => (
-              <span 
-                key={taskIndex} 
-                className="text-sm"
-              >
-                {task}
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  ))}
-</div>
-
-        {/* Footer */}
-        <div className="bg-white rounded-xl shadow-md p-6 mt-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="font-medium">Alice</p>
-              <p className="text-sm text-gray-600">Student</p>
-            </div>
-            <div className="text-sm text-gray-500">
-              {new Date().toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </div>
-          </div>
         </div>
+
+
       </div>
     </div>
   );
