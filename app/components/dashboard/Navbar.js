@@ -105,8 +105,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex flex-col space-y-8 mt-4">
-          {/* Navigation items */}
+        {/* Navigation items */}
+        <div className="flex flex-col space-y-8 mt-4 flex-grow">
           {navItems.map((item, index) => (
             <NavItem 
               key={index}
@@ -116,19 +116,19 @@ export default function Navbar() {
               badge={item.badge}
             />
           ))}
+        </div>
 
-          {/* Profile section */}
-          <div className="mt-12 pt-6 border-t border-gray-200">
-            <div className="flex items-center space-x-3">
-              <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <div>
-                <p className="font-medium text-gray-800">Aliza</p>
-                <p className="text-xs text-gray-500">View profile</p>
-              </div>
+        {/* Profile section moved to footer */}
+        <div className="mt-auto py-6 border-t border-gray-200">
+          <div className="flex items-center space-x-3">
+            <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <div>
+              <p className="font-medium text-gray-800">Aliza</p>
+              <p className="text-xs text-gray-500">View profile</p>
             </div>
           </div>
         </div>
@@ -172,19 +172,19 @@ export default function Navbar() {
                   />
                 ))}
               </div>
+            </div>
 
-              {/* Profile section for mobile */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <div className="flex items-center space-x-3">
-                  <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-800">Aliza</p>
-                    <p className="text-xs text-gray-500">View profile</p>
-                  </div>
+            {/* Profile section for mobile in footer */}
+            <div className="py-6 border-t border-gray-200 px-4">
+              <div className="flex items-center space-x-3">
+                <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium text-gray-800">Aliza</p>
+                  <p className="text-xs text-gray-500">View profile</p>
                 </div>
               </div>
             </div>
