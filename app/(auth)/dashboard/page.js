@@ -1,7 +1,7 @@
+// app/dashboard/page.js
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import PerformanceMetric from "../../components/dashboard/PerformanceMetric";
 import DashboardButton from "../../components/dashboard/DashboardButton";
 import { Button } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -14,118 +14,85 @@ export default function Dashboard() {
     // Authentication check would go here
   }, []);
 
+  const quickLinks = [
+    { src: "/Diary.png", alt: "My Diary", path: "/dashboard/diary" },
+    { src: "/Reports.png", alt: "Diary Reports", path: "/dashboard/diary-reports" },
+    { src: "/Test.png", alt: "Online Test", path: "/dashboard/online-test" },
+    { src: "/OnlineTest.png", alt: "Test Report", path: "/dashboard/test-report" },
+    { src: "/Daily.png", alt: "Daily Time Table", path: "/dashboard/time-table" },
+    { src: "/DailyActivity.png", alt: "Daily Activity", path: "/dashboard/daily-activity" },
+    { src: "/Eductional.png", alt: "Educational Network", path: "/dashboard/educational-network" },
+    { src: "/Demerits.png", alt: "Personality Demerits", path: "/dashboard/demerits" },
+    { src: "/Prizes.png", alt: "Prizes", path: "/dashboard/prizes" },
+    { src: "/Motivational.png", alt: "Motivational Video", path: "/dashboard/motivational-videos" },
+    { src: "/Upload.png", alt: "Upload Video", path: "/dashboard/upload-video" },
+    { src: "/Chat.png", alt: "Chat Room", path: "/dashboard/chat" },
+    { src: "/Complaint.png", alt: "Complaint & Suggestions", path: "/dashboard/complaints" },
+    { src: "/Invite.png", alt: "Invite Friends", path: "/dashboard/invite" },
+  ];
+
   return (
     <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-      {/* Welcome Banner
+      {/* Welcome Banner */}
       <div className="bg-white rounded-lg p-6 mb-6 text-gray-900 shadow-md">
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-2xl font-bold mb-2">Hi Aliza 👋</h2>
             <p className="text-lg">Welcome to U Right Ways.</p>
           </div>
-          <div className="flex">
-            <Button
-              variant="contained"
-              color="success"
-              startIcon={<CheckCircleIcon />}
-              sx={{
-                fontSize: "1rem",
-                padding: "8px 16px",
-                borderRadius: "12px",
-                textTransform: "none",
-                fontWeight: "bold",
-                backgroundColor: "#4CAF50",
-                marginRight: "12px",
-                "&:hover": {
-                  backgroundColor: "#3e8e41",
-                },
-              }}
-            >
-              Verified
-            </Button>
+          <div className="flex items-center">
+            <div className="flex">
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<CheckCircleIcon />}
+                sx={{
+                  fontSize: "1rem",
+                  padding: "8px 16px",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  backgroundColor: "#4CAF50",
+                  marginRight: "12px",
+                  "&:hover": {
+                    backgroundColor: "#3e8e41",
+                  },
+                }}
+              >
+                Verified
+              </Button>
 
-            <Button
-              variant="contained"
-              color="default"
-              startIcon={<LooksOneIcon />}
-              sx={{
-                fontSize: "1rem",
-                padding: "8px 16px",
-                borderRadius: "12px",
-                textTransform: "none",
-                fontWeight: "bold",
-                backgroundColor: "#e0e0e0",
-                color: "#000",
-                "&:hover": {
-                  backgroundColor: "#bdbdbd",
-                },
-              }}
-            >
-              Basic
-            </Button>
+              <Button
+                variant="contained"
+                color="default"
+                startIcon={<LooksOneIcon />}
+                sx={{
+                  fontSize: "1rem",
+                  padding: "8px 16px",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  backgroundColor: "#e0e0e0",
+                  color: "#000",
+                  "&:hover": {
+                    backgroundColor: "#bdbdbd",
+                  },
+                }}
+              >
+                Basic
+              </Button>
+            </div>
+            {/* Profile Image */}
+            <div className="ml-4">
+              <img
+                src="/profile.png"
+                alt="Profile"
+                className="w-12 h-12 rounded-full object-cover border-2 border-gray-300"
+              />
+            </div>
           </div>
         </div>
-      </div> */}
-      {/* Welcome Banner */}
-<div className="bg-white rounded-lg p-6 mb-6 text-gray-900 shadow-md">
-  <div className="flex justify-between items-start">
-    <div>
-      <h2 className="text-2xl font-bold mb-2">Hi Aliza 👋</h2>
-      <p className="text-lg">Welcome to U Right Ways.</p>
-    </div>
-    <div className="flex items-center">
-      <div className="flex">
-        <Button
-          variant="contained"
-          color="success"
-          startIcon={<CheckCircleIcon />}
-          sx={{
-            fontSize: "1rem",
-            padding: "8px 16px",
-            borderRadius: "12px",
-            textTransform: "none",
-            fontWeight: "bold",
-            backgroundColor: "#4CAF50",
-            marginRight: "12px",
-            "&:hover": {
-              backgroundColor: "#3e8e41",
-            },
-          }}
-        >
-          Verified
-        </Button>
-
-        <Button
-          variant="contained"
-          color="default"
-          startIcon={<LooksOneIcon />}
-          sx={{
-            fontSize: "1rem",
-            padding: "8px 16px",
-            borderRadius: "12px",
-            textTransform: "none",
-            fontWeight: "bold",
-            backgroundColor: "#e0e0e0",
-            color: "#000",
-            "&:hover": {
-              backgroundColor: "#bdbdbd",
-            },
-          }}
-        >
-          Basic
-        </Button>
       </div>
-      {/* Profile Image */}
-      <div className="ml-4">
-        <img 
-          src="/profile.png" 
-          alt="Profile" 
-          className="w-12 h-12 rounded-full object-cover border-2 border-gray-300"
-        />
-      </div>
-    </div>
-  </div>
-</div>
 
       {/* Performance Rating */}
       <div className="bg-white rounded-lg shadow p-6 mb-6">
@@ -196,23 +163,13 @@ export default function Dashboard() {
       {/* Quick Links */}
       <div className="bg-white rounded-lg shadow p-6">
         <div className="grid grid-cols-2 gap-4">
-          {[
-            { src: "/Diary.png", alt: "My Diary" },
-            { src: "/Reports.png", alt: "Diary Reports" },
-            { src: "/Test.png", alt: "Online Test" },
-            { src: "/OnlineTest.png", alt: "Test Report" },
-            { src: "/Daily.png", alt: "Daily Time Table" },
-            { src: "/DailyActivity.png", alt: "Daily Activity" },
-            { src: "/Eductional.png", alt: "Educational Network" },
-            { src: "/Demerits.png", alt: "Personality Demerits" },
-            { src: "/Prizes.png", alt: "Prizes" },
-            { src: "/Motivational.png", alt: "Motivational Video" },
-            { src: "/Upload.png", alt: "Upload Video" },
-            { src: "/Chat.png", alt: "Chat Room" },
-            { src: "/Complaint.png", alt: "Complaint & Suggestions" },
-            { src: "/Invite.png", alt: "Invite Friends" },
-          ].map((item, index) => (
-            <DashboardButton key={index} src={item.src} alt={item.alt} />
+          {quickLinks.map((item, index) => (
+            <DashboardButton 
+              key={index} 
+              src={item.src} 
+              alt={item.alt} 
+              path={item.path}
+            />
           ))}
         </div>
       </div>

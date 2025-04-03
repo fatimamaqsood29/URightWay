@@ -1,9 +1,22 @@
+// components/dashboard/DashboardButton.js
 "use client";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-const DashboardButton = ({ src, alt }) => {
+const DashboardButton = ({ src, alt, path }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (path) {
+      router.push(path);
+    }
+  };
+
   return (
-    <button className="rounded-lg overflow-hidden">
+    <button 
+      className="rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+      onClick={handleClick}
+    >
       <Image 
         src={src} 
         alt={alt} 
@@ -16,7 +29,3 @@ const DashboardButton = ({ src, alt }) => {
 };
 
 export default DashboardButton;
-//Created a new DashboardButton component that handles the button and image rendering
-//Updated the main dashboard page to import and use this component
-//Simplified the mapping in the Quick Links section by passing the props directly to the DashboardButton component
-//This separation makes the code more modular and easier to maintain. The DashboardButton component can now be reused elsewhere in your application if needed

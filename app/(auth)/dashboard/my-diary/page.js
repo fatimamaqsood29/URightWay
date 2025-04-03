@@ -1,256 +1,226 @@
-// pages/my-diary.js
-import React from "react";
-import {
-  FiChevronDown,
-  FiCheckCircle,
-  FiClock,
-  FiCheck,
-  FiSearch,
-} from "react-icons/fi";
-import {
-  FaTasks,
-  FaClock as FaClockSolid,
-  FaCheckCircle as FaCheckCircleSolid,
-} from "react-icons/fa";
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import DashboardButton from "../../components/dashboard/DashboardButton";
+import { Button } from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import LooksOneIcon from "@mui/icons-material/LooksOne";
 
-const categories = [
-  {
-    label: "Islamic Duties",
-    tag: "Reading",
-    tasks: ["Program", "Facilitation", "Dracul Pelt", "Reminder", "Benet on Hadd"],
-    bgColor: "#FFA36A",
-    iconBg: "#FFF7C2"
-  },
-  {
-    label: "Parents Obedience",
-    tag: "Reading",
-    tasks: ["Father", "Mother", "Elder Sibling"],
-    bgColor: "#FC80CA",
-    iconBg: "#FC37AC"
-  },
-  {
-    label: "Health",
-    tag: "Reading",
-    tasks: ["Exercise", "Sports", "Unthoughts Things", "Teeth Brush", "Drink Water", 
-           "Stepping", "Cool Water", "Sugar Use", "Less Eating", "Balance Diet", 
-           "Fast Foods", "Hand Wash", "Slow Eating", "Natural Environment", "Decrease"],
-    bgColor: "#F9A508",
-    iconBg: "#E39608"
-  },
-  {
-    label: "Personality Groom",
-    tag: "Reading",
-    tasks: ["Dressing", "Hairs", "Stoes", "Gate", "Speaking"],
-    bgColor: "#4BAC00",
-    iconBg: "#377D00"
-  },
- 
-  {
-    label: "Etiquettes",
-    tag: "Reading",
-    tasks: ["Lic", "Truthfulness", "Respect", "Help", "Quoret", "Abuse", 
-           "Theft", "Backbiting", "Jealous", "Promise", "Remove Hardie", "Shout"],
-    bgColor: "#03B0CF",
-    iconBg: "#009BB7"
-  },
-  {
-    label: "Bearance",
-    tag: "Complete",
-    tasks: ["Parents Debate", "Anyone Debate", "Forgive Mistake"],
-    bgColor: "#FF4F4F",
-    iconBg: "#FC2B2B"
-  },
-  {
-    label: "My Dream & Mission",
-    tag: "Complete",
-    tasks: ["My Dream", "To Achieve Goal"],
-    bgColor: "#6191F9",
-    iconBg: "#3271FB"
-  },
-  {
-    label: "Discipline & Time Management",
-    tag: "Complete",
-    tasks: ["Discipline Chart", "Self Study", "Mobile Use", "Waste Time", "Tomorrow"],
-    bgColor: "#DB8FF9",
-    iconBg: "#E39BFF"
-  },
-  {
-    label: "Hardworking",
-    tag: "Reading",
-    tasks: ["Hardwork"],
-    bgColor: "#FE9554",
-    iconBg: "#FF7118"
-  },
-  {
-    label: "Love With Pakistan",
-    tag: "Reading",
-    tasks: ["Responsible Citizen", "Emotional Attachment", "Respect of Law"],
-    bgColor: "#8F8383",
-    iconBg: "#737373"
-  },
-  {
-    label: "Amount Spent",
-    tag: "Complete",
-    tasks: ["Packet Money", "Barrow", "Wasteful spending", "Save Money"],
-    bgColor: "#0EB4C0",
-    iconBg: "#48BFC8"
-  },
-  {
-    label: "Cleanliness",
-    tag: "Reading",
-    tasks: ["Take Bath", "Dress", "Name", "Class Room", "Street", "Pakistan"],
-    bgColor: "#87B6D8",
-    iconBg: "#74B0DC"
-  },
-  {
-    label: "Self Confidence",
-    tag: "Complete",
-    tasks: ["Positive Thinking", "Self Talk", "Own Quantities"],
-    bgColor: "#B67649",
-    iconBg: "#AB4B06"
-  },
- 
- 
-  {
-    label: "In School/College",
-    tag: "Complete",
-    tasks: ["Attendees", "Lots/in Time", "Home Work", "Teacher Intention", 
-           "Subject Teacher Leave", "Subject Learning", "Insulated By Teacher"],
-    bgColor: "#8866D8",
-    iconBg: "#8552FC"
-  },
-];
+export default function Dashboard() {
+  const router = useRouter();
 
-const chunkArray = (array, size) => {
-  const result = [];
-  for (let i = 0; i < array.length; i += size) {
-    result.push(array.slice(i, i + size));
-  }
-  return result;
-};
+  useEffect(() => {
+    // Authentication check would go here
+  }, []);
 
-const MyDiary = () => {
+  const handleNavigation = (path) => {
+    router.push(path);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 p-4 font-sans">
-      <div className="max-w-8xl mx-auto">
-        {/* Header */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-          <h1 className="text-3xl font-bold mb-2">Islamic Duties</h1>
-          <p className="text-gray-600">
-            Stay True, Stay Honest. Complete Your Tasks with Integrity.
-          </p>
-        </div>
+    <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+      {/* Welcome Banner */}
+      <div className="bg-white rounded-lg p-6 mb-6 text-gray-900 shadow-md">
+        <div className="flex justify-between items-start">
+          <div>
+            <h2 className="text-2xl font-bold mb-2">Hi Aliza 👋</h2>
+            <p className="text-lg">Welcome to U Right Ways.</p>
+          </div>
+          <div className="flex items-center">
+            <div className="flex">
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<CheckCircleIcon />}
+                sx={{
+                  fontSize: "1rem",
+                  padding: "8px 16px",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  backgroundColor: "#4CAF50",
+                  marginRight: "12px",
+                  "&:hover": {
+                    backgroundColor: "#3e8e41",
+                  },
+                }}
+              >
+                Verified
+              </Button>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="bg-white rounded-xl shadow-md p-4 text-center">
-            <div className="flex justify-center items-center mb-1">
-              <FaTasks className="text-black mr-2" size={24} />
-              <p className="text-3xl font-bold text-black">24</p>
+              <Button
+                variant="contained"
+                color="default"
+                startIcon={<LooksOneIcon />}
+                sx={{
+                  fontSize: "1rem",
+                  padding: "8px 16px",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  backgroundColor: "#e0e0e0",
+                  color: "#000",
+                  "&:hover": {
+                    backgroundColor: "#bdbdbd",
+                  },
+                }}
+              >
+                Basic
+              </Button>
             </div>
-            <p className="text-gray-600">Total Tasks</p>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-md p-4 text-center">
-            <div className="flex justify-center items-center mb-1">
-              <FaClockSolid className="text-yellow-500 mr-2" size={24} />
-              <p className="text-3xl font-bold text-black">12</p>
+            {/* Profile Image */}
+            <div className="ml-4">
+              <img
+                src="/profile.png"
+                alt="Profile"
+                className="w-12 h-12 rounded-full object-cover border-2 border-gray-300"
+              />
             </div>
-            <p className="text-gray-600">Pending Tasks</p>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-md p-4 text-center">
-            <div className="flex justify-center items-center mb-1">
-              <FaCheckCircleSolid className="text-green-500 mr-2" size={24} />
-              <p className="text-3xl font-bold text-black">12</p>
-            </div>
-            <p className="text-gray-600">Completed Tasks</p>
           </div>
         </div>
-
-        {/* Daily Task Section */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-gray-700">Daily Tasks</h2>
-            <FiChevronDown className="text-gray-500 text-lg" />
-          </div>
-          <div className="flex space-x-6 text-sm">
-            <button className="flex items-center text-gray-700">
-              <FiCheckCircle className="mr-1.5" size={16} />
-              All
-            </button>
-            <button className="flex items-center text-gray-700">
-              <FiClock className="mr-1.5" size={16} />
-              Pending
-            </button>
-            <button className="flex items-center text-gray-700">
-              <FiCheck className="mr-1.5" size={16} />
-              Completed
-            </button>
-          </div>
-        </div>
-
-        {/* Search */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-          <div className="relative">
-            <FiSearch
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              size={18}
-            />
-            <input
-              type="text"
-              placeholder="Search Your Tasks"
-              className="w-full py-2 pl-9 pr-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-            />
-          </div>
-        </div>
-
-        {/* Task Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {categories.map((category, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-xl shadow-md p-6 flex flex-col"
-              style={{ 
-                backgroundColor: category.bgColor, 
-                color: 'white',
-                height: '300px'
-              }}
-            >
-              <div className="flex items-center mb-4">
-                <span 
-                  className="text-xs font-medium px-2.5 py-0.5 rounded"
-                  style={{ backgroundColor: category.iconBg, color: 'black' }}
-                >
-                  {category.tag}
-                </span>
-                <h3 className="ml-2 font-bold text-lg">
-                  {category.label}
-                </h3>
-              </div>
-              
-              <div className="space-y-3 overflow-y-auto flex-grow">
-                {chunkArray(category.tasks, 5).map((taskGroup, groupIndex) => (
-                  <div key={groupIndex} className="flex flex-wrap gap-2">
-                    {taskGroup.map((task, taskIndex) => (
-                      <span 
-                        key={taskIndex} 
-                        className="text-sm"
-                      >
-                        {task}
-                      </span>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-
       </div>
-    </div>
-  );
-};
 
-export default MyDiary;
+      {/* Performance Rating */}
+      <div className="bg-white rounded-lg shadow p-6 mb-6">
+        <h3 className="text-xl font-semibold text-gray-800">
+          My Performance Rating (MPR)
+        </h3>
+        <div className="my-4 w-full">
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="flex justify-between mb-2 text-sm font-medium text-gray-700">
+              <span>Overall Performance</span>
+              <span>72%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-5">
+              <div
+                className="h-5 rounded-full bg-[#ebad3b]"
+                style={{ width: "62%" }}
+              ></div>
+            </div>
+          </div>
+        </div>
+        <p className="text-gray-600">Assessing My Achievements and Growth</p>
+        {/* Performance Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {/* Truthfulness - Now with Green Colors */}
+          <div className="bg-green-100 p-4 rounded-lg">
+            <div className="flex justify-between mb-2 text-sm font-medium text-gray-700">
+              <span>Truthfulness</span>
+              <span>22%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-5">
+              <div
+                className="h-5 rounded-full bg-green-500"
+                style={{ width: "22%" }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Demerits Self Reported */}
+          <div className="bg-red-100 p-4 rounded-lg">
+            <div className="flex justify-between mb-2 text-sm font-medium text-gray-700">
+              <span>Demerits Self Reported</span>
+              <span>10%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-5">
+              <div
+                className="h-5 rounded-full bg-[#ff006e]"
+                style={{ width: "10%" }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Test Report */}
+          <div className="bg-amber-100 p-4 rounded-lg">
+            <div className="flex justify-between mb-2 text-sm font-medium text-gray-700">
+              <span>Test Report</span>
+              <span>60%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-5">
+              <div
+                className="h-5 rounded-full bg-[#ffbe0b]"
+                style={{ width: "60%" }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Links */}
+      <div className="bg-white rounded-lg shadow p-6">
+        <div className="grid grid-cols-2 gap-4">
+          <DashboardButton 
+            src="/Diary.png" 
+            alt="My Diary" 
+            onClick={() => handleNavigation("/my-diary")}
+          />
+          <DashboardButton 
+            src="/Reports.png" 
+            alt="Diary Reports" 
+            onClick={() => handleNavigation("/diary-reports")}
+          />
+          <DashboardButton 
+            src="/Test.png" 
+            alt="Online Test" 
+            onClick={() => handleNavigation("/online-test")}
+          />
+          <DashboardButton 
+            src="/OnlineTest.png" 
+            alt="Test Report" 
+            onClick={() => handleNavigation("/test-report")}
+          />
+          <DashboardButton 
+            src="/Daily.png" 
+            alt="Daily Time Table" 
+            onClick={() => handleNavigation("/daily-timetable")}
+          />
+          <DashboardButton 
+            src="/DailyActivity.png" 
+            alt="Daily Activity" 
+            onClick={() => handleNavigation("/daily-activity")}
+          />
+          <DashboardButton 
+            src="/Eductional.png" 
+            alt="Educational Network" 
+            onClick={() => handleNavigation("/educational-network")}
+          />
+          <DashboardButton 
+            src="/Demerits.png" 
+            alt="Personality Demerits" 
+            onClick={() => handleNavigation("/personality-demerits")}
+          />
+          <DashboardButton 
+            src="/Prizes.png" 
+            alt="Prizes" 
+            onClick={() => handleNavigation("/prizes")}
+          />
+          <DashboardButton 
+            src="/Motivational.png" 
+            alt="Motivational Video" 
+            onClick={() => handleNavigation("/motivational-video")}
+          />
+          <DashboardButton 
+            src="/Upload.png" 
+            alt="Upload Video" 
+            onClick={() => handleNavigation("/upload-video")}
+          />
+          <DashboardButton 
+            src="/Chat.png" 
+            alt="Chat Room" 
+            onClick={() => handleNavigation("/chat-room")}
+          />
+          <DashboardButton 
+            src="/Complaint.png" 
+            alt="Complaint & Suggestions" 
+            onClick={() => handleNavigation("/complaints-suggestions")}
+          />
+          <DashboardButton 
+            src="/Invite.png" 
+            alt="Invite Friends" 
+            onClick={() => handleNavigation("/invite-friends")}
+          />
+        </div>
+      </div>
+    </main>
+  );
+}
