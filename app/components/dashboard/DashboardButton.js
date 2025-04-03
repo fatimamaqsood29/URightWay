@@ -1,25 +1,22 @@
-// components/dashboard/DashboardButton.js
 "use client";
 import Image from 'next/image';
 
-export default function DashboardButton({ icon, text, className }) {
-  const isEmoji = !icon.startsWith('/');
-  
+const DashboardButton = ({ src, alt }) => {
   return (
-    <button className={`flex flex-col items-center justify-center p-3 rounded-lg transition-colors h-full ${className}`}>
-      {isEmoji ? (
-        <span className="text-2xl mb-1">{icon}</span>
-      ) : (
-        <div className="w-10 h-10 mb-1 relative">
-          <Image
-            src={icon}
-            alt={text}
-            fill
-            className="object-contain"
-          />
-        </div>
-      )}
-      <span className="text-xs text-center font-medium">{text}</span>
+    <button className="rounded-lg overflow-hidden">
+      <Image 
+        src={src} 
+        alt={alt} 
+        width={250} 
+        height={120} 
+        className="w-full object-cover rounded-lg" 
+      />
     </button>
   );
-}
+};
+
+export default DashboardButton;
+//Created a new DashboardButton component that handles the button and image rendering
+//Updated the main dashboard page to import and use this component
+//Simplified the mapping in the Quick Links section by passing the props directly to the DashboardButton component
+//This separation makes the code more modular and easier to maintain. The DashboardButton component can now be reused elsewhere in your application if needed
