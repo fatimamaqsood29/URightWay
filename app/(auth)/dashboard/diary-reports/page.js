@@ -146,12 +146,12 @@ export default function DairyReportPage() {
           📖 Task Report
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Increased gap between items */}
           {tasks.map((task, index) => (
             <div key={index} className="p-4 bg-white rounded-lg shadow-md flex items-center">
-              <div className="relative w-16 h-16 mr-4">
+              <div className="relative w-24 h-24 mr-6"> {/* Increased circle size from w-16/h-16 to w-24/h-24 */}
                 {/* Background circle */}
-                <svg width="64" height="64" viewBox="0 0 36 36" className="absolute">
+                <svg width="96" height="96" viewBox="0 0 36 36" className="absolute">
                   <circle
                     cx="18"
                     cy="18"
@@ -167,7 +167,7 @@ export default function DairyReportPage() {
                     clipPath: getCircleClipPath(task.agree),
                   }}
                 >
-                  <svg width="64" height="64" viewBox="0 0 36 36">
+                  <svg width="96" height="96" viewBox="0 0 36 36">
                     <circle
                       cx="18"
                       cy="18"
@@ -177,9 +177,9 @@ export default function DairyReportPage() {
                   </svg>
                 </div>
                 
-                {/* Percentage text */}
+                {/* Percentage text - increased font size */}
                 <div className="absolute w-full h-full flex items-center justify-center">
-                  <span className="text-xs font-medium text-gray-800">
+                  <span className="text-sm font-medium text-gray-800"> {/* Changed from text-xs to text-sm */}
                     {task.agree}%
                   </span>
                 </div>
