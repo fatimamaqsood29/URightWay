@@ -1,11 +1,9 @@
-// app/dashboard/page.js
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import DashboardButton from "../../components/dashboard/DashboardButton";
 import { Button } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import LooksOneIcon from "@mui/icons-material/LooksOne";
+import Image from "next/image";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -41,45 +39,73 @@ export default function Dashboard() {
             <p className="text-lg">Welcome to U Right Ways.</p>
           </div>
           <div className="flex items-center">
-            <div className="flex">
+            <div className="flex gap-4">
+              {/* Verified Button - Larger and more rounded */}
               <Button
                 variant="contained"
-                color="success"
-                startIcon={<CheckCircleIcon />}
                 sx={{
-                  fontSize: "1rem",
-                  padding: "8px 16px",
-                  borderRadius: "12px",
+                  padding: "12px 20px",
+                  borderRadius: "16px", // Increased from 12px
                   textTransform: "none",
-                  fontWeight: "bold",
-                  backgroundColor: "#4CAF50",
-                  marginRight: "12px",
+                  backgroundColor: "#82DB8A",
+                  color: "#000",
+                  border: "1px solid #A7F3D0",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px", // Increased from 8px
+                  minWidth: "140px", // Increased from 120px
+                  height: "70px", // Increased from 60px
                   "&:hover": {
-                    backgroundColor: "#3e8e41",
+                    backgroundColor: "#6BCB77",
                   },
                 }}
               >
-                Verified
+                <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-9 h-9"> {/* Increased size */}
+                  <Image 
+                    src="/Rectangle.png" 
+                    alt="Verified" 
+                    width={18} // Slightly larger
+                    height={18}
+                  />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-medium">Status:</div> {/* Slightly larger */}
+                  <div className="text-base font-semibold">Verified</div> {/* Slightly larger */}
+                </div>
               </Button>
 
+              {/* Basic Button - Larger and more rounded */}
               <Button
                 variant="contained"
-                color="default"
-                startIcon={<LooksOneIcon />}
                 sx={{
-                  fontSize: "1rem",
-                  padding: "8px 16px",
-                  borderRadius: "12px",
+                  padding: "12px 20px",
+                  borderRadius: "16px", // Increased from 12px
                   textTransform: "none",
-                  fontWeight: "bold",
-                  backgroundColor: "#e0e0e0",
-                  color: "#000",
+                  backgroundColor: "#7B7B7B",
+                  color: "#FFF",
+                  border: "1px solid #9E9E9E",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px", // Increased from 8px
+                  minWidth: "140px", // Increased from 120px
+                  height: "70px", // Increased from 60px
                   "&:hover": {
-                    backgroundColor: "#bdbdbd",
+                    backgroundColor: "#6B6B6B",
                   },
                 }}
               >
-                Basic
+                <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-9 h-9"> {/* Increased size */}
+                  <Image 
+                    src="/leaderboard-icon.png" 
+                    alt="Basic" 
+                    width={18} // Slightly larger
+                    height={18}
+                  />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-medium">Level:</div> {/* Slightly larger */}
+                  <div className="text-base font-semibold">Basic</div> {/* Slightly larger */}
+                </div>
               </Button>
             </div>
             {/* Profile Image */}
@@ -93,6 +119,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
 
       {/* Performance Rating */}
       <div className="bg-white rounded-lg shadow p-6 mb-6">
@@ -116,7 +143,7 @@ export default function Dashboard() {
         <p className="text-gray-600">Assessing My Achievements and Growth</p>
         {/* Performance Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          {/* Truthfulness - Now with Green Colors */}
+          {/* Truthfulness */}
           <div className="bg-green-100 p-4 rounded-lg">
             <div className="flex justify-between mb-2 text-sm font-medium text-gray-700">
               <span>Truthfulness</span>

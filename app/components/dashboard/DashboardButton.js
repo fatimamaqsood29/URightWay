@@ -27,5 +27,5 @@ const DashboardButton = ({ src, alt, path }) => {
     </button>
   );
 };
-
+///Users/apple/Documents/SchoolProject/ui-flight-way-account/app/components/dashboard/DashboardButton.js
 export default DashboardButton;
